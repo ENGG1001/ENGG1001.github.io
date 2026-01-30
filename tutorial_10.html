@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-29">
+<meta name="dcterms.date" content="2026-01-30">
 
 <title>Tutorial 10: Class Design</title>
 <style>
@@ -2241,7 +2241,8 @@ body, p, li, ul, ol, div:not([class*="idle"]):not([class*="code"]) {
 font-family: var(--bs-body-font-family) !important;
 }
 .idle-terminal, .idle-script-wrapper, .idle-script-wrapper .cell-code,
-.idle-script-wrapper .idle-output-box, .idle-output-header {
+.idle-script-wrapper .idle-output-box, .idle-output-header,
+.csv-download-wrapper, .csv-download-wrapper .cell-code {
 font-family: 'Courier New', Courier, monospace !important;
 font-size: 15px !important;
 line-height: 1.3 !important;
@@ -2253,7 +2254,8 @@ font-family: 'Courier New', Courier, monospace !important;
 font-size: 15px !important;
 line-height: 1.3 !important;
 }
-.idle-terminal code, .idle-terminal pre, .idle-script-wrapper code, .idle-script-wrapper pre {
+.idle-terminal code, .idle-terminal pre, .idle-script-wrapper code, .idle-script-wrapper pre,
+.csv-download-wrapper code, .csv-download-wrapper pre {
 font-size: 100% !important; font-family: inherit !important;
 }
 
@@ -2266,6 +2268,19 @@ background-color: transparent !important; border: none !important; border-radius
 margin-top: 0 !important; margin-bottom: 0 !important;
 }
 .idle-script-wrapper pre.numberSource code > span > a:first-child::before {
+color: #999 !important; text-decoration: none !important; border-right: 1px solid #eee;
+padding-right: 8px; margin-right: 8px; display: inline-block; font-weight: normal;
+}
+
+.csv-download-wrapper { width: 100%; margin-bottom: 1.5em; }
+.csv-download-wrapper .cell-code {
+background-color: #fdfdfd; border: 1px solid #ccc; border-left: 5px solid #777; border-radius: 4px; padding: 0px 0 0px 0;
+}
+.csv-download-wrapper .cell-code pre {
+background-color: transparent !important; border: none !important; border-radius: 0 !important;
+margin-top: 0 !important; margin-bottom: 0 !important;
+}
+.csv-download-wrapper pre.numberSource code > span > a:first-child::before {
 color: #999 !important; text-decoration: none !important; border-right: 1px solid #eee;
 padding-right: 8px; margin-right: 8px; display: inline-block; font-weight: normal;
 }
@@ -2348,14 +2363,14 @@ background-color: #fdfdfd; border: 1px solid #ccc; border-left: 5px solid #777; 
 .idle-gutter { flex-shrink: 0; width: 50px; text-align: right; padding-right: 12px; margin-right: 12px; border-right: 1px solid #e0e0e0; user-select: none; }
 .idle-gutter.prompt { color: #ad0000; font-weight: bold; } .idle-content { flex-grow: 1; white-space: pre; color: #000; }
 
-.idle-terminal span.kw, .idle-script-wrapper code span.kw, .idle-terminal span.cf, .idle-script-wrapper code span.cf, .idle-terminal span.im, .idle-script-wrapper code span.im, .idle-terminal span.cn, .idle-script-wrapper code span.cn, .idle-terminal span.va, .idle-script-wrapper code span.va { color: #ff7700 !important; font-weight: normal !important; }
-.idle-terminal span.bu, .idle-script-wrapper code span.bu { color: #900090 !important; font-weight: normal !important; }
-.idle-terminal span.fu, .idle-script-wrapper code span.fu, span.fu { color: #0000ff !important; font-weight: normal !important; }
-.idle-terminal span.st, .idle-script-wrapper code span.st { color: #00aa00 !important; font-weight: normal !important; font-style: normal !important; }
-.idle-terminal span.co, .idle-script-wrapper code span.co { color: #00aa00 !important; font-weight: normal !important; font-style: normal !important; }
-.idle-terminal span.co.comment, .idle-script-wrapper code span.co.comment { color: #dd0000 !important; font-weight: normal !important; font-style: normal !important; }
-.idle-terminal span.dv, .idle-terminal span.bn, .idle-script-wrapper code span.dv, .idle-script-wrapper code span.bn, .idle-terminal span.op, .idle-script-wrapper code span.op { color: #000000 !important; font-weight: normal !important; }
-.idle-terminal span.va.self, .idle-script-wrapper code span.va.self { color: #000000 !important; }
+.idle-terminal span.kw, .idle-script-wrapper code span.kw, .csv-download-wrapper code span.kw, .idle-terminal span.cf, .idle-script-wrapper code span.cf, .csv-download-wrapper code span.cf, .idle-terminal span.im, .idle-script-wrapper code span.im, .csv-download-wrapper code span.im, .idle-terminal span.cn, .idle-script-wrapper code span.cn, .csv-download-wrapper code span.cn, .idle-terminal span.va, .idle-script-wrapper code span.va, .csv-download-wrapper code span.va { color: #ff7700 !important; font-weight: normal !important; }
+.idle-terminal span.bu, .idle-script-wrapper code span.bu, .csv-download-wrapper code span.bu { color: #900090 !important; font-weight: normal !important; }
+.idle-terminal span.fu, .idle-script-wrapper code span.fu, .csv-download-wrapper code span.fu, span.fu { color: #0000ff !important; font-weight: normal !important; }
+.idle-terminal span.st, .idle-script-wrapper code span.st, .csv-download-wrapper code span.st { color: #00aa00 !important; font-weight: normal !important; font-style: normal !important; }
+.idle-terminal span.co, .idle-script-wrapper code span.co, .csv-download-wrapper code span.co { color: #00aa00 !important; font-weight: normal !important; font-style: normal !important; }
+.idle-terminal span.co.comment, .idle-script-wrapper code span.co.comment, .csv-download-wrapper code span.co.comment { color: #dd0000 !important; font-weight: normal !important; font-style: normal !important; }
+.idle-terminal span.dv, .idle-terminal span.bn, .idle-script-wrapper code span.dv, .csv-download-wrapper code span.dv, .idle-script-wrapper code span.bn, .csv-download-wrapper code span.bn, .idle-terminal span.op, .idle-script-wrapper code span.op, .csv-download-wrapper code span.op { color: #000000 !important; font-weight: normal !important; }
+.idle-terminal span.va.self, .idle-script-wrapper code span.va.self, .csv-download-wrapper code span.va.self { color: #000000 !important; }
 .idle-output { color: #0000ff !important; }
 .idle-user-input { color: #000000 !important; }
 
@@ -2375,12 +2390,14 @@ margin-bottom: 0;
 
 @media (prefers-color-scheme: dark) {
 
-.idle-filename-header .idle-download-btn {
+.idle-filename-header .idle-download-btn,
+.idle-filename-header .csv-download-btn {
 background: transparent !important;
 border-color: transparent !important;
 color: #888 !important;
 }
-.idle-filename-header .idle-download-btn:hover {
+.idle-filename-header .idle-download-btn:hover,
+.idle-filename-header .csv-download-btn:hover {
 background: rgba(255, 255, 255, 0.05) !important;
 border-color: transparent !important;
 color: #aaa !important;
@@ -2427,12 +2444,41 @@ opacity: 1 !important;
 width: auto !important;
 height: auto !important;
 color: #333;
+text-decoration: none;
+}
+
+.idle-filename-header .csv-download-btn {
+position: static !important;
+background: white;
+border: 1px solid #ccc;
+border-radius: 4px;
+padding: 4px 8px;
+cursor: pointer;
+display: inline-flex !important;
+align-items: center;
+transition: all 0.2s;
+flex-shrink: 0;
+opacity: 1 !important;
+width: auto !important;
+height: auto !important;
+color: #333;
+text-decoration: none;
 }
 .idle-filename-header .idle-download-btn:hover {
 background: #e9ecef;
 border-color: #adb5bd;
+text-decoration: none;
+}
+.idle-filename-header .csv-download-btn:hover {
+background: #e9ecef;
+border-color: #adb5bd;
+text-decoration: none;
 }
 .idle-filename-header .idle-download-btn svg {
+display: block;
+color: inherit;
+}
+.idle-filename-header .csv-download-btn svg {
 display: block;
 color: inherit;
 }
@@ -2459,7 +2505,25 @@ margin-bottom: 0 !important;
 margin-top: 0 !important;
 }
 
+.csv-download-wrapper > .sourceCode {
+border-top-left-radius: 0 !important;
+border-top-right-radius: 0 !important;
+margin-top: 0 !important;
+margin-bottom: 0px !important;
+}
+.csv-download-wrapper > div:not(.cell-output):not(.idle-output-box) {
+margin-bottom: 0 !important;
+}
+.csv-download-wrapper .cell-code {
+margin-bottom: 0 !important;
+margin-top: 0 !important;
+}
+
 .idle-script-wrapper .cell-code > div {
+margin-top: 0 !important;
+margin-bottom: 0 !important;
+}
+.csv-download-wrapper .cell-code > div {
 margin-top: 0 !important;
 margin-bottom: 0 !important;
 }
@@ -2467,8 +2531,18 @@ margin-bottom: 0 !important;
 .idle-script-wrapper .cell-code > div:has(.idle-filename-header) {
 margin-bottom: 0 !important;
 }
+.csv-download-wrapper .cell-code > div:has(.idle-filename-header) {
+margin-bottom: 0 !important;
+}
 
 .idle-script-wrapper .cell-code > div:has(.idle-filename-header) + div {
+margin-top: 0 !important;
+}
+.csv-download-wrapper .cell-code > div:has(.idle-filename-header) + div {
+margin-top: 0 !important;
+}
+
+.csv-download-wrapper .code-copy-outer-scaffold {
 margin-top: 0 !important;
 }
 
@@ -2479,6 +2553,23 @@ margin-top: 0 !important;
 .idle-filename-header + div.cell-code pre {
 border-top-left-radius: 0 !important;
 border-top-right-radius: 0 !important;
+}
+
+.csv-download-wrapper .idle-filename-header + .sourceCode,
+.csv-download-wrapper .idle-filename-header ~ .sourceCode,
+.csv-download-wrapper .cell-code .sourceCode {
+margin-top: 0 !important;
+border-top: none !important;
+}
+
+.csv-download-wrapper .cell-code .sourceCode pre,
+.csv-download-wrapper .cell-code pre code {
+padding-bottom: 0 !important;
+margin-bottom: 0 !important;
+}
+.csv-download-wrapper .code-copy-outer-scaffold {
+padding-bottom: 0 !important;
+margin-bottom: 0 !important;
 }
 
 .idle-script-wrapper .idle-run-btn {
@@ -2499,19 +2590,23 @@ border-top-right-radius: 0 !important;
 margin-top: 0 !important;
 }
 
-.idle-script-wrapper .cell-code .code-copy-outer-scaffold {
+.idle-script-wrapper .cell-code .code-copy-outer-scaffold,
+.csv-download-wrapper .cell-code .code-copy-outer-scaffold {
 margin-top: 0 !important;
 margin-bottom: 0 !important;
 }
-.idle-script-wrapper .cell-code .code-copy-outer-scaffold .sourceCode {
+.idle-script-wrapper .cell-code .code-copy-outer-scaffold .sourceCode,
+.csv-download-wrapper .cell-code .code-copy-outer-scaffold .sourceCode {
 margin-top: 0 !important;
 }
 
-.idle-script-wrapper .cell-code div.sourceCode {
+.idle-script-wrapper .cell-code div.sourceCode,
+.csv-download-wrapper .cell-code div.sourceCode {
 margin: 0 !important;
 }
 
-.idle-script-wrapper .cell-code > .code-with-filename-file {
+.idle-script-wrapper .cell-code > .code-with-filename-file,
+.csv-download-wrapper .cell-code > .code-with-filename-file {
 display: none;
 }</style>
 </head>
@@ -2536,7 +2631,7 @@ display: none;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 29, 2026</p>
+      <p class="date">January 30, 2026</p>
     </div>
   </div>
   
@@ -2564,14 +2659,35 @@ display: none;
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-4560" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-2188" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-e18" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-d8ee" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-4560)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-2188)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-e18)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-d8ee)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>student.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="student.py" data-code="class%20Student%3A%0D%0A%20%20%20%20%22%22%22Simple%20representation%20of%20a%20university%20student.%22%22%22%0D%0A%0D%0A%20%20%20%20def%20__init__%28self%2C%20name%3A%20str%29%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Create%20a%20student%20with%20a%20name.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Parameters%0D%0A%20%20%20%20%20%20%20%20----------%0D%0A%20%20%20%20%20%20%20%20name%20%3A%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20self._name%20%3D%20name%0D%0A%0D%0A%20%20%20%20def%20get_name%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20name.%0D%0A%20%20%20%20%20%20%20%20%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._name" title="Download student.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-student-py" type="text/plain">class Student:
+    """Simple representation of a university student."""
+
+    def __init__(self, name: str):
+        """Create a student with a name.
+
+        Parameters
+        ----------
+        name : str
+            The student's name.
+        """
+        self._name = name
+
+    def get_name(self) -> str:
+        """Return the student's name.
+        
+        Returns
+        -------
+        str
+            The student's name.
+        """
+        return self._name</script><button class="idle-download-btn" data-filename="student.py" data-content-id="download-content-student-py" title="Download student.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -2606,10 +2722,84 @@ display: none;
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -2623,11 +2813,8 @@ display: none;
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -2639,50 +2826,11 @@ display: none;
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -2729,14 +2877,79 @@ Note
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-cf27" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-17163" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-e119" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-62cb" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-cf27)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-17163)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-e119)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-62cb)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>student.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="student.py" data-code="class%20Student%3A%0D%0A%20%20%20%20%22%22%22Simple%20representation%20of%20a%20university%20student.%22%22%22%0D%0A%0D%0A%20%20%20%20def%20__init__%28self%2C%20name%3A%20str%2C%20student_num%3A%20int%2C%20degree%3A%20str%29%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Create%20a%20student%20with%20a%20name.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Parameters%0D%0A%20%20%20%20%20%20%20%20----------%0D%0A%20%20%20%20%20%20%20%20name%20%3A%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20self._name%20%3D%20name%0D%0A%20%20%20%20%20%20%20%20self._student_num%20%3D%20student_num%0D%0A%20%20%20%20%20%20%20%20self._degree%20%3D%20degree%0D%0A%0D%0A%20%20%20%20def%20get_name%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20name.%0D%0A%20%20%20%20%20%20%20%20%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._name%0D%0A%0D%0A%20%20%20%20def%20get_student_num%28self%29%20-%3E%20int%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20number.%0D%0A%20%20%20%20%20%20%20%20%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20int%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20number.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._student_num%0D%0A%0D%0A%20%20%20%20def%20get_degree%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20degree.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20degree.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._degree%0D%0A%20%20%20%20%0D%0A%20%20%20%20def%20set_degree%28self%2C%20degree%3A%20str%29%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Set%20the%20student%27s%20degree.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Parameters%0D%0A%20%20%20%20%20%20%20%20----------%0D%0A%20%20%20%20%20%20%20%20degree%20%3A%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20new%20degree.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20self._degree%20%3D%20degree%0D%0A%0D%0Astudent%20%3D%20Student%28%27Michael%20Palin%27%2C%2043215678%2C%20%27BInfTech%27%29%0D%0Aprint%28student.get_name%28%29%29%0D%0Aprint%28student.get_student_num%28%29%29%0D%0Aprint%28student.get_degree%28%29%29%0D%0A%0D%0Astudent.set_degree%28%27BE%27%29%0D%0Aprint%28student.get_degree%28%29%29%0D%0A%20%20%20%20%0D%0A%23%20It%20might%20be%20inappropriate%20to%20add%20a%20set_student_num%20method%20because%0D%0A%23%20student%20numbers%20are%20typically%20unique%20identifiers%20assigned%20by%20the%0D%0A%23%20university%20and%20should%20not%20be%20changed%20by%20the%20student%20or%20anyone%20else.%20%20%20" title="Download student.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-student-py" type="text/plain">class Student:
+    """Simple representation of a university student."""
+
+    def __init__(self, name: str, student_num: int, degree: str):
+        """Create a student with a name.
+
+        Parameters
+        ----------
+        name : str
+            The student's name.
+        """
+        self._name = name
+        self._student_num = student_num
+        self._degree = degree
+
+    def get_name(self) -> str:
+        """Return the student's name.
+        
+        Returns
+        -------
+        str
+            The student's name.
+        """
+        return self._name
+
+    def get_student_num(self) -> int:
+        """Return the student's number.
+        
+        Returns
+        -------
+        int
+            The student's number.
+        """
+        return self._student_num
+
+    def get_degree(self) -> str:
+        """Return the student's degree.
+
+        Returns
+        -------
+        str
+            The student's degree.
+        """
+        return self._degree
+    
+    def set_degree(self, degree: str):
+        """Set the student's degree.
+
+        Parameters
+        ----------
+        degree : str
+            The new degree.
+        """
+        self._degree = degree
+
+student = Student('Michael Palin', 43215678, 'BInfTech')
+print(student.get_name())
+print(student.get_student_num())
+print(student.get_degree())
+
+student.set_degree('BE')
+print(student.get_degree())
+    
+# It might be inappropriate to add a set_student_num method because
+# student numbers are typically unique identifiers assigned by the
+# university and should not be changed by the student or anyone else.   </script><button class="idle-download-btn" data-filename="student.py" data-content-id="download-content-student-py" title="Download student.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -2816,11 +3029,11 @@ Note
  Run Code</button>
 <div class="idle-output-header"><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-eae9" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-133db" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-8c8" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-1256" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-eae9)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-133db)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-8c8)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-1256)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 Output</div>
 <div class="idle-output-box">
@@ -2836,10 +3049,84 @@ BE</code></pre>
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -2853,11 +3140,8 @@ BE</code></pre>
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -2869,50 +3153,11 @@ BE</code></pre>
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -2959,14 +3204,125 @@ BE</code></pre>
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-154a6" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-13153" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-10b56" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-4cee" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-154a6)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-13153)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-10b56)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-4cee)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>student.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="student.py" data-code="class%20Student%3A%0D%0A%20%20%20%20%22%22%22Simple%20representation%20of%20a%20university%20student.%22%22%22%0D%0A%0D%0A%20%20%20%20def%20__init__%28self%2C%20name%3A%20str%2C%20student_num%3A%20int%2C%20degree%3A%20str%29%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Create%20a%20student%20with%20a%20name.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Parameters%0D%0A%20%20%20%20%20%20%20%20----------%0D%0A%20%20%20%20%20%20%20%20name%20%3A%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20self._name%20%3D%20name%0D%0A%20%20%20%20%20%20%20%20self._student_num%20%3D%20student_num%0D%0A%20%20%20%20%20%20%20%20self._degree%20%3D%20degree%0D%0A%0D%0A%20%20%20%20def%20get_name%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20name.%0D%0A%20%20%20%20%20%20%20%20%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._name%0D%0A%0D%0A%20%20%20%20def%20get_student_num%28self%29%20-%3E%20int%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20number.%0D%0A%20%20%20%20%20%20%20%20%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20int%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20number.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._student_num%0D%0A%0D%0A%20%20%20%20def%20get_degree%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20degree.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20degree.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._degree%0D%0A%20%20%20%20%0D%0A%20%20%20%20def%20set_degree%28self%2C%20degree%3A%20str%29%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Set%20the%20student%27s%20degree.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Parameters%0D%0A%20%20%20%20%20%20%20%20----------%0D%0A%20%20%20%20%20%20%20%20degree%20%3A%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20new%20degree.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20self._degree%20%3D%20degree%0D%0A%20%20%20%20%0D%0A%20%20%20%20def%20get_first_name%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20first%20name.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20first%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._name.split%28%27%20%27%29%5B0%5D%0D%0A%20%20%20%20%0D%0A%20%20%20%20def%20get_last_name%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20last%20name.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20last%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._name.split%28%27%20%27%29%5B1%5D%0D%0A%20%20%20%20%0D%0A%20%20%20%20def%20get_email%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20email%20address.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20email%20address.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20first%2C%20last%20%3D%20self.get_first_name%28%29%2C%20self.get_last_name%28%29%0D%0A%20%20%20%20%20%20%20%20return%20f%22%7Bfirst.lower%28%29%7D.%7Blast.lower%28%29%7D%40uq.net.au%22%0D%0A%20%20%20%20%0D%0A%20%20%20%20def%20__str__%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20a%20string%20representation%20of%20the%20student.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20A%20string%20representation%20of%20the%20student.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20f%22%7Bself._name%7D%20%28%7Bself.get_email%28%29%7D%2C%20%7Bself._student_num%7D%2C%20%7Bself._degree%7D%29%22%0D%0A%20%20%20%20%0D%0A%20%20%20%20def%20__repr__%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20a%20string%20representation%20of%20the%20student.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20A%20string%20representation%20of%20the%20student.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20f%22Student%28%27%7Bself._name%7D%27%2C%20%7Bself._student_num%7D%2C%20%27%7Bself._degree%7D%27%29%22%0D%0A%0D%0Astudent%20%3D%20Student%28%27Michael%20Palin%27%2C%2043215678%2C%20%27BInfTech%27%29%0D%0Aprint%28student.get_first_name%28%29%29%0D%0Aprint%28student.get_last_name%28%29%29%0D%0Aprint%28student.get_email%28%29%29%0D%0Aprint%28str%28student%29%29%0D%0Aprint%28repr%28student%29%29" title="Download student.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-student-py" type="text/plain">class Student:
+    """Simple representation of a university student."""
+
+    def __init__(self, name: str, student_num: int, degree: str):
+        """Create a student with a name.
+
+        Parameters
+        ----------
+        name : str
+            The student's name.
+        """
+        self._name = name
+        self._student_num = student_num
+        self._degree = degree
+
+    def get_name(self) -> str:
+        """Return the student's name.
+        
+        Returns
+        -------
+        str
+            The student's name.
+        """
+        return self._name
+
+    def get_student_num(self) -> int:
+        """Return the student's number.
+        
+        Returns
+        -------
+        int
+            The student's number.
+        """
+        return self._student_num
+
+    def get_degree(self) -> str:
+        """Return the student's degree.
+
+        Returns
+        -------
+        str
+            The student's degree.
+        """
+        return self._degree
+    
+    def set_degree(self, degree: str):
+        """Set the student's degree.
+
+        Parameters
+        ----------
+        degree : str
+            The new degree.
+        """
+        self._degree = degree
+    
+    def get_first_name(self) -> str:
+        """Return the student's first name.
+
+        Returns
+        -------
+        str
+            The student's first name.
+        """
+        return self._name.split(' ')[0]
+    
+    def get_last_name(self) -> str:
+        """Return the student's last name.
+
+        Returns
+        -------
+        str
+            The student's last name.
+        """
+        return self._name.split(' ')[1]
+    
+    def get_email(self) -> str:
+        """Return the student's email address.
+
+        Returns
+        -------
+        str
+            The student's email address.
+        """
+        first, last = self.get_first_name(), self.get_last_name()
+        return f"{first.lower()}.{last.lower()}@uq.net.au"
+    
+    def __str__(self) -> str:
+        """Return a string representation of the student.
+
+        Returns
+        -------
+        str
+            A string representation of the student.
+        """
+        return f"{self._name} ({self.get_email()}, {self._student_num}, {self._degree})"
+    
+    def __repr__(self) -> str:
+        """Return a string representation of the student.
+
+        Returns
+        -------
+        str
+            A string representation of the student.
+        """
+        return f"Student('{self._name}', {self._student_num}, '{self._degree}')"
+
+student = Student('Michael Palin', 43215678, 'BInfTech')
+print(student.get_first_name())
+print(student.get_last_name())
+print(student.get_email())
+print(str(student))
+print(repr(student))</script><button class="idle-download-btn" data-filename="student.py" data-content-id="download-content-student-py" title="Download student.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -3092,11 +3448,11 @@ BE</code></pre>
  Run Code</button>
 <div class="idle-output-header"><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-b35" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-6115" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-108f6" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-10fa7" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-b35)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-6115)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-108f6)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-10fa7)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 Output</div>
 <div class="idle-output-box">
@@ -3113,10 +3469,84 @@ Student(&#39;Michael Palin&#39;, 43215678, &#39;BInfTech&#39;)</code></pre>
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3130,11 +3560,8 @@ Student(&#39;Michael Palin&#39;, 43215678, &#39;BInfTech&#39;)</code></pre>
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3146,50 +3573,11 @@ Student(&#39;Michael Palin&#39;, 43215678, &#39;BInfTech&#39;)</code></pre>
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -3245,14 +3633,44 @@ Tip
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-133ea" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-2810" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-d0c7" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-13231" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-133ea)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-2810)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-d0c7)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-13231)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>student_check.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="student_check.py" data-code="def%20check_students%28students%3A%20list%5BStudent%5D%29%20-%3E%20bool%3A%0D%0A%20%20%20%20%22%22%22Check%20if%20all%20students%20have%20different%20student%20numbers.%0D%0A%0D%0A%20%20%20%20Parameters%0D%0A%20%20%20%20----------%0D%0A%20%20%20%20students%20%3A%20list%20of%20Student%0D%0A%20%20%20%20%20%20%20%20The%20list%20of%20students%20to%20check.%0D%0A%0D%0A%20%20%20%20Returns%0D%0A%20%20%20%20-------%0D%0A%20%20%20%20bool%0D%0A%20%20%20%20%20%20%20%20True%20if%20all%20students%20have%20different%20student%20numbers%2C%20False%20otherwise.%0D%0A%20%20%20%20%22%22%22%0D%0A%20%20%20%20student_nums%20%3D%20%5B%5D%0D%0A%20%20%20%20for%20student%20in%20students%3A%0D%0A%20%20%20%20%20%20%20%20num%20%3D%20student.get_student_num%28%29%0D%0A%20%20%20%20%20%20%20%20if%20num%20in%20student_nums%3A%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20False%0D%0A%20%20%20%20%20%20%20%20student_nums.append%28num%29%0D%0A%20%20%20%20return%20True%0D%0A%0D%0Astudents1%20%3D%20%5BStudent%28%27Alice%20A%27%2C%201%2C%20%27BE%27%29%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20Student%28%27Bob%20B%27%2C%202%2C%20%27BA%27%29%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20Student%28%27Carol%20C%27%2C%204%2C%20%27BA%27%29%5D%0D%0Aprint%28check_students%28students1%29%29%0D%0A%0D%0Astudents2%20%3D%20%5BStudent%28%27Alice%20A%27%2C%201%2C%20%27BE%27%29%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20Student%28%27Bob%20B%27%2C%202%2C%20%27BA%27%29%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20Student%28%27Carol%20C%27%2C%204%2C%20%27BA%27%29%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20Student%28%27Dan%20D%27%2C%202%2C%20%27BInfTech%27%29%5D%0D%0Aprint%28check_students%28students2%29%29" title="Download student_check.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-student-check-py" type="text/plain">def check_students(students: list[Student]) -> bool:
+    """Check if all students have different student numbers.
+
+    Parameters
+    ----------
+    students : list of Student
+        The list of students to check.
+
+    Returns
+    -------
+    bool
+        True if all students have different student numbers, False otherwise.
+    """
+    student_nums = []
+    for student in students:
+        num = student.get_student_num()
+        if num in student_nums:
+            return False
+        student_nums.append(num)
+    return True
+
+students1 = [Student('Alice A', 1, 'BE'),
+             Student('Bob B', 2, 'BA'),
+             Student('Carol C', 4, 'BA')]
+print(check_students(students1))
+
+students2 = [Student('Alice A', 1, 'BE'),
+             Student('Bob B', 2, 'BA'),
+             Student('Carol C', 4, 'BA'),
+             Student('Dan D', 2, 'BInfTech')]
+print(check_students(students2))</script><button class="idle-download-btn" data-filename="student_check.py" data-content-id="download-content-student-check-py" title="Download student_check.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -3297,11 +3715,11 @@ Tip
  Run Code</button>
 <div class="idle-output-header"><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-15d30" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-a2dc" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-4a77" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-10d91" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-15d30)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-a2dc)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-4a77)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-10d91)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 Output</div>
 <div class="idle-output-box">
@@ -3315,10 +3733,84 @@ False</code></pre>
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3332,11 +3824,8 @@ False</code></pre>
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3348,50 +3837,11 @@ False</code></pre>
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -3445,14 +3895,119 @@ False</code></pre>
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-13f9d" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-ac53" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-22ee" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-3a29" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-13f9d)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-ac53)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-22ee)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-3a29)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>student_course.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="student_course.py" data-code="class%20Course%3A%0D%0A%20%20%20%20%22%22%22Simple%20representation%20of%20a%20university%20course.%22%22%22%0D%0A%0D%0A%20%20%20%20def%20__init__%28self%2C%20code%3A%20str%2C%20name%3A%20str%29%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Create%20a%20course%20with%20a%20code%20and%20name.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Parameters%0D%0A%20%20%20%20%20%20%20%20----------%0D%0A%20%20%20%20%20%20%20%20code%20%3A%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20course%20code.%0D%0A%20%20%20%20%20%20%20%20name%20%3A%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20course%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20self._code%20%3D%20code%0D%0A%20%20%20%20%20%20%20%20self._name%20%3D%20name%0D%0A%0D%0A%20%20%20%20def%20get_code%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20course%20code.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20course%20code.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._code%0D%0A%0D%0A%20%20%20%20def%20get_name%28self%29%20-%3E%20str%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20course%20name.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20course%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._name%0D%0A%0D%0Aclass%20Student%3A%0D%0A%20%20%20%20%22%22%22Simple%20representation%20of%20a%20university%20student.%22%22%22%0D%0A%0D%0A%20%20%20%20def%20__init__%28self%2C%20name%3A%20str%2C%20student_num%3A%20int%2C%20degree%3A%20str%29%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Create%20a%20student%20with%20a%20name.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Parameters%0D%0A%20%20%20%20%20%20%20%20----------%0D%0A%20%20%20%20%20%20%20%20name%20%3A%20str%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20name.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20self._name%20%3D%20name%0D%0A%20%20%20%20%20%20%20%20self._student_num%20%3D%20student_num%0D%0A%20%20%20%20%20%20%20%20self._degree%20%3D%20degree%0D%0A%20%20%20%20%20%20%20%20self._grades%20%3D%20%7B%7D%0D%0A%20%20%20%20%0D%0A%20%20%20%20def%20add_grade%28self%2C%20course%3A%20Course%2C%20grade%3A%20float%29%20-%3E%20None%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Add%20or%20update%20the%20student%27s%20grade%20for%20a%20course.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Parameters%0D%0A%20%20%20%20%20%20%20%20----------%0D%0A%20%20%20%20%20%20%20%20course%20%3A%20Course%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20course%20for%20which%20to%20add%2Fupdate%20the%20grade.%0D%0A%20%20%20%20%20%20%20%20grade%20%3A%20float%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20grade%20to%20add%2Fupdate.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20self._grades%5Bcourse%5D%20%3D%20grade%0D%0A%20%20%20%20%0D%0A%20%20%20%20def%20get_grade%28self%2C%20course%3A%20Course%29%20-%3E%20float%20%7C%20None%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20grade%20for%20a%20course.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Parameters%0D%0A%20%20%20%20%20%20%20%20----------%0D%0A%20%20%20%20%20%20%20%20course%20%3A%20Course%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20course%20for%20which%20to%20get%20the%20grade.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20float%20or%20None%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20grade%20for%20the%20course%2C%20or%20None%20if%20no%20grade%20exists.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%20%20%20%20%20%20%20%20return%20self._grades.get%28course%2C%20None%29%0D%0A%0D%0A%20%20%20%20def%20gpa%28self%29%20-%3E%20float%3A%0D%0A%20%20%20%20%20%20%20%20%22%22%22Return%20the%20student%27s%20GPA.%0D%0A%0D%0A%20%20%20%20%20%20%20%20Returns%0D%0A%20%20%20%20%20%20%20%20-------%0D%0A%20%20%20%20%20%20%20%20float%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20The%20student%27s%20GPA.%0D%0A%20%20%20%20%20%20%20%20%22%22%22%0D%0A%0D%0A%20%20%20%20%20%20%20%20%23%20check%20if%20there%20are%20any%20grades%0D%0A%20%20%20%20%20%20%20%20if%20not%20self._grades%3A%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20return%200.0%0D%0A%20%20%20%20%20%20%20%20%0D%0A%20%20%20%20%20%20%20%20total%20%3D%20sum%28self._grades.values%28%29%29%0D%0A%20%20%20%20%20%20%20%20return%20total%20%2F%20len%28self._grades%29%0D%0A%0D%0Astudent%20%3D%20Student%28%27Michael%20Palin%27%2C%2043215678%2C%20%27BE%27%29%0D%0Aengg1001%20%3D%20Course%28%27ENGG1001%27%2C%20%27Programming%20for%20Engineers%27%29%0D%0Amath1051%20%3D%20Course%28%27MATH1051%27%2C%20%27Calculus%20and%20Linear%20Algebra%20I%27%29%0D%0Astudent.add_grade%28engg1001%2C%206%29%0D%0Aprint%28student.gpa%28%29%29%0D%0Aprint%28student.get_grade%28engg1001%29%29%0D%0Astudent.add_grade%28math1051%2C%205%29%0D%0Aprint%28student.gpa%28%29%29%0D%0Astudent.add_grade%28engg1001%2C%207%29%20%23%20Overwrite%20the%20old%20grade%0D%0Aprint%28student.get_grade%28engg1001%29%29%0D%0Aprint%28student.gpa%28%29%29" title="Download student_course.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-student-course-py" type="text/plain">class Course:
+    """Simple representation of a university course."""
+
+    def __init__(self, code: str, name: str):
+        """Create a course with a code and name.
+
+        Parameters
+        ----------
+        code : str
+            The course code.
+        name : str
+            The course name.
+        """
+        self._code = code
+        self._name = name
+
+    def get_code(self) -> str:
+        """Return the course code.
+
+        Returns
+        -------
+        str
+            The course code.
+        """
+        return self._code
+
+    def get_name(self) -> str:
+        """Return the course name.
+
+        Returns
+        -------
+        str
+            The course name.
+        """
+        return self._name
+
+class Student:
+    """Simple representation of a university student."""
+
+    def __init__(self, name: str, student_num: int, degree: str):
+        """Create a student with a name.
+
+        Parameters
+        ----------
+        name : str
+            The student's name.
+        """
+        self._name = name
+        self._student_num = student_num
+        self._degree = degree
+        self._grades = {}
+    
+    def add_grade(self, course: Course, grade: float) -> None:
+        """Add or update the student's grade for a course.
+
+        Parameters
+        ----------
+        course : Course
+            The course for which to add/update the grade.
+        grade : float
+            The grade to add/update.
+        """
+        self._grades[course] = grade
+    
+    def get_grade(self, course: Course) -> float | None:
+        """Return the student's grade for a course.
+
+        Parameters
+        ----------
+        course : Course
+            The course for which to get the grade.
+
+        Returns
+        -------
+        float or None
+            The student's grade for the course, or None if no grade exists.
+        """
+        return self._grades.get(course, None)
+
+    def gpa(self) -> float:
+        """Return the student's GPA.
+
+        Returns
+        -------
+        float
+            The student's GPA.
+        """
+
+        # check if there are any grades
+        if not self._grades:
+            return 0.0
+        
+        total = sum(self._grades.values())
+        return total / len(self._grades)
+
+student = Student('Michael Palin', 43215678, 'BE')
+engg1001 = Course('ENGG1001', 'Programming for Engineers')
+math1051 = Course('MATH1051', 'Calculus and Linear Algebra I')
+student.add_grade(engg1001, 6)
+print(student.gpa())
+print(student.get_grade(engg1001))
+student.add_grade(math1051, 5)
+print(student.gpa())
+student.add_grade(engg1001, 7) # Overwrite the old grade
+print(student.get_grade(engg1001))
+print(student.gpa())</script><button class="idle-download-btn" data-filename="student_course.py" data-content-id="download-content-student-course-py" title="Download student_course.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -3572,11 +4127,11 @@ False</code></pre>
  Run Code</button>
 <div class="idle-output-header"><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-1196e" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-2624" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-2ae1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-114a5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-1196e)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-2624)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-2ae1)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-114a5)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 Output</div>
 <div class="idle-output-box">
@@ -3593,10 +4148,84 @@ Output</div>
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3610,11 +4239,8 @@ Output</div>
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3626,50 +4252,11 @@ Output</div>
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -3716,14 +4303,60 @@ Output</div>
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-145dd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-c79f" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-223f" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-8a5a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-145dd)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-c79f)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-223f)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-8a5a)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>course_average.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="course_average.py" data-code="def%20course_average%28students%3A%20list%5BStudent%5D%2C%20course%3A%20Course%29%20-%3E%20float%3A%0D%0A%20%20%20%20%22%22%22Return%20the%20average%20grade%20for%20a%20course%20across%20all%20students.%0D%0A%0D%0A%20%20%20%20Parameters%0D%0A%20%20%20%20----------%0D%0A%20%20%20%20students%20%3A%20list%20of%20Student%0D%0A%20%20%20%20%20%20%20%20The%20list%20of%20students.%0D%0A%20%20%20%20course%20%3A%20Course%0D%0A%20%20%20%20%20%20%20%20The%20course%20for%20which%20to%20calculate%20the%20average.%0D%0A%0D%0A%20%20%20%20Returns%0D%0A%20%20%20%20-------%0D%0A%20%20%20%20float%0D%0A%20%20%20%20%20%20%20%20The%20average%20grade%20for%20the%20course.%0D%0A%20%20%20%20%22%22%22%0D%0A%20%20%20%20total%20%3D%200.0%0D%0A%20%20%20%20count%20%3D%200%0D%0A%20%20%20%20for%20student%20in%20students%3A%0D%0A%0D%0A%20%20%20%20%20%20%20%20%23%20Get%20the%20student%27s%20grade%20for%20the%20course%0D%0A%20%20%20%20%20%20%20%20grade%20%3D%20student.get_grade%28course%29%0D%0A%0D%0A%20%20%20%20%20%20%20%20%23%20If%20the%20student%20has%20a%20grade%2C%20add%20it%20to%20the%20total%0D%0A%20%20%20%20%20%20%20%20if%20grade%20is%20not%20None%3A%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20total%20%2B%3D%20grade%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20count%20%2B%3D%201%0D%0A%20%20%20%20%0D%0A%20%20%20%20%23%20Avoid%20division%20by%20zero%0D%0A%20%20%20%20if%20count%20%3D%3D%200%3A%0D%0A%20%20%20%20%20%20%20%20return%200.0%0D%0A%0D%0A%20%20%20%20%23%20Return%20the%20average%0D%0A%20%20%20%20return%20total%20%2F%20count%0D%0A%0D%0Astudents%20%3D%20%5BStudent%28%27Alice%20A%27%2C%201%2C%20%27BE%27%29%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20Student%28%27Bob%20B%27%2C%202%2C%20%27BA%27%29%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20Student%28%27Carol%20C%27%2C%204%2C%20%27BA%27%29%5D%0D%0Aengg1001%20%3D%20Course%28%27ENGG1001%27%2C%20%27Programming%20for%20Engineers%27%29%0D%0Astudents%5B0%5D.add_grade%28engg1001%2C%206%29%0D%0Astudents%5B1%5D.add_grade%28engg1001%2C%207%29%0D%0Astudents%5B2%5D.add_grade%28engg1001%2C%205%29%0D%0Aprint%28course_average%28students%2C%20engg1001%29%29%0D%0Amath1051%20%3D%20Course%28%27MATH1051%27%2C%20%27Calculus%20and%20Linear%20Algebra%20I%27%29%0D%0Astudents%5B0%5D.add_grade%28math1051%2C%205%29%0D%0Astudents%5B1%5D.add_grade%28math1051%2C%206%29%0D%0Aprint%28course_average%28students%2C%20math1051%29%29%0D%0Aprint%28course_average%28students%2C%20Course%28%27PHYS1001%27%2C%20%27Physics%20I%27%29%29%29%20%23%20No%20grades" title="Download course_average.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-course-average-py" type="text/plain">def course_average(students: list[Student], course: Course) -> float:
+    """Return the average grade for a course across all students.
+
+    Parameters
+    ----------
+    students : list of Student
+        The list of students.
+    course : Course
+        The course for which to calculate the average.
+
+    Returns
+    -------
+    float
+        The average grade for the course.
+    """
+    total = 0.0
+    count = 0
+    for student in students:
+
+        # Get the student's grade for the course
+        grade = student.get_grade(course)
+
+        # If the student has a grade, add it to the total
+        if grade is not None:
+            total += grade
+            count += 1
+    
+    # Avoid division by zero
+    if count == 0:
+        return 0.0
+
+    # Return the average
+    return total / count
+
+students = [Student('Alice A', 1, 'BE'),
+            Student('Bob B', 2, 'BA'),
+            Student('Carol C', 4, 'BA')]
+engg1001 = Course('ENGG1001', 'Programming for Engineers')
+students[0].add_grade(engg1001, 6)
+students[1].add_grade(engg1001, 7)
+students[2].add_grade(engg1001, 5)
+print(course_average(students, engg1001))
+math1051 = Course('MATH1051', 'Calculus and Linear Algebra I')
+students[0].add_grade(math1051, 5)
+students[1].add_grade(math1051, 6)
+print(course_average(students, math1051))
+print(course_average(students, Course('PHYS1001', 'Physics I'))) # No grades</script><button class="idle-download-btn" data-filename="course_average.py" data-content-id="download-content-course-average-py" title="Download course_average.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -3784,11 +4417,11 @@ Output</div>
  Run Code</button>
 <div class="idle-output-header"><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9b6-18080" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9b6-7a9b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-3474" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d10-27b3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9b6-18080)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9b6-7a9b)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-3474)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d10-27b3)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 Output</div>
 <div class="idle-output-box">
@@ -3803,10 +4436,84 @@ Output</div>
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3820,11 +4527,8 @@ Output</div>
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3836,50 +4540,11 @@ Output</div>
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-29">
+<meta name="dcterms.date" content="2026-01-30">
 
 <title>Tutorial 3: Functional Decomposition</title>
 <style>
@@ -2241,7 +2241,8 @@ body, p, li, ul, ol, div:not([class*="idle"]):not([class*="code"]) {
 font-family: var(--bs-body-font-family) !important;
 }
 .idle-terminal, .idle-script-wrapper, .idle-script-wrapper .cell-code,
-.idle-script-wrapper .idle-output-box, .idle-output-header {
+.idle-script-wrapper .idle-output-box, .idle-output-header,
+.csv-download-wrapper, .csv-download-wrapper .cell-code {
 font-family: 'Courier New', Courier, monospace !important;
 font-size: 15px !important;
 line-height: 1.3 !important;
@@ -2253,7 +2254,8 @@ font-family: 'Courier New', Courier, monospace !important;
 font-size: 15px !important;
 line-height: 1.3 !important;
 }
-.idle-terminal code, .idle-terminal pre, .idle-script-wrapper code, .idle-script-wrapper pre {
+.idle-terminal code, .idle-terminal pre, .idle-script-wrapper code, .idle-script-wrapper pre,
+.csv-download-wrapper code, .csv-download-wrapper pre {
 font-size: 100% !important; font-family: inherit !important;
 }
 
@@ -2266,6 +2268,19 @@ background-color: transparent !important; border: none !important; border-radius
 margin-top: 0 !important; margin-bottom: 0 !important;
 }
 .idle-script-wrapper pre.numberSource code > span > a:first-child::before {
+color: #999 !important; text-decoration: none !important; border-right: 1px solid #eee;
+padding-right: 8px; margin-right: 8px; display: inline-block; font-weight: normal;
+}
+
+.csv-download-wrapper { width: 100%; margin-bottom: 1.5em; }
+.csv-download-wrapper .cell-code {
+background-color: #fdfdfd; border: 1px solid #ccc; border-left: 5px solid #777; border-radius: 4px; padding: 0px 0 0px 0;
+}
+.csv-download-wrapper .cell-code pre {
+background-color: transparent !important; border: none !important; border-radius: 0 !important;
+margin-top: 0 !important; margin-bottom: 0 !important;
+}
+.csv-download-wrapper pre.numberSource code > span > a:first-child::before {
 color: #999 !important; text-decoration: none !important; border-right: 1px solid #eee;
 padding-right: 8px; margin-right: 8px; display: inline-block; font-weight: normal;
 }
@@ -2348,14 +2363,14 @@ background-color: #fdfdfd; border: 1px solid #ccc; border-left: 5px solid #777; 
 .idle-gutter { flex-shrink: 0; width: 50px; text-align: right; padding-right: 12px; margin-right: 12px; border-right: 1px solid #e0e0e0; user-select: none; }
 .idle-gutter.prompt { color: #ad0000; font-weight: bold; } .idle-content { flex-grow: 1; white-space: pre; color: #000; }
 
-.idle-terminal span.kw, .idle-script-wrapper code span.kw, .idle-terminal span.cf, .idle-script-wrapper code span.cf, .idle-terminal span.im, .idle-script-wrapper code span.im, .idle-terminal span.cn, .idle-script-wrapper code span.cn, .idle-terminal span.va, .idle-script-wrapper code span.va { color: #ff7700 !important; font-weight: normal !important; }
-.idle-terminal span.bu, .idle-script-wrapper code span.bu { color: #900090 !important; font-weight: normal !important; }
-.idle-terminal span.fu, .idle-script-wrapper code span.fu, span.fu { color: #0000ff !important; font-weight: normal !important; }
-.idle-terminal span.st, .idle-script-wrapper code span.st { color: #00aa00 !important; font-weight: normal !important; font-style: normal !important; }
-.idle-terminal span.co, .idle-script-wrapper code span.co { color: #00aa00 !important; font-weight: normal !important; font-style: normal !important; }
-.idle-terminal span.co.comment, .idle-script-wrapper code span.co.comment { color: #dd0000 !important; font-weight: normal !important; font-style: normal !important; }
-.idle-terminal span.dv, .idle-terminal span.bn, .idle-script-wrapper code span.dv, .idle-script-wrapper code span.bn, .idle-terminal span.op, .idle-script-wrapper code span.op { color: #000000 !important; font-weight: normal !important; }
-.idle-terminal span.va.self, .idle-script-wrapper code span.va.self { color: #000000 !important; }
+.idle-terminal span.kw, .idle-script-wrapper code span.kw, .csv-download-wrapper code span.kw, .idle-terminal span.cf, .idle-script-wrapper code span.cf, .csv-download-wrapper code span.cf, .idle-terminal span.im, .idle-script-wrapper code span.im, .csv-download-wrapper code span.im, .idle-terminal span.cn, .idle-script-wrapper code span.cn, .csv-download-wrapper code span.cn, .idle-terminal span.va, .idle-script-wrapper code span.va, .csv-download-wrapper code span.va { color: #ff7700 !important; font-weight: normal !important; }
+.idle-terminal span.bu, .idle-script-wrapper code span.bu, .csv-download-wrapper code span.bu { color: #900090 !important; font-weight: normal !important; }
+.idle-terminal span.fu, .idle-script-wrapper code span.fu, .csv-download-wrapper code span.fu, span.fu { color: #0000ff !important; font-weight: normal !important; }
+.idle-terminal span.st, .idle-script-wrapper code span.st, .csv-download-wrapper code span.st { color: #00aa00 !important; font-weight: normal !important; font-style: normal !important; }
+.idle-terminal span.co, .idle-script-wrapper code span.co, .csv-download-wrapper code span.co { color: #00aa00 !important; font-weight: normal !important; font-style: normal !important; }
+.idle-terminal span.co.comment, .idle-script-wrapper code span.co.comment, .csv-download-wrapper code span.co.comment { color: #dd0000 !important; font-weight: normal !important; font-style: normal !important; }
+.idle-terminal span.dv, .idle-terminal span.bn, .idle-script-wrapper code span.dv, .csv-download-wrapper code span.dv, .idle-script-wrapper code span.bn, .csv-download-wrapper code span.bn, .idle-terminal span.op, .idle-script-wrapper code span.op, .csv-download-wrapper code span.op { color: #000000 !important; font-weight: normal !important; }
+.idle-terminal span.va.self, .idle-script-wrapper code span.va.self, .csv-download-wrapper code span.va.self { color: #000000 !important; }
 .idle-output { color: #0000ff !important; }
 .idle-user-input { color: #000000 !important; }
 
@@ -2375,12 +2390,14 @@ margin-bottom: 0;
 
 @media (prefers-color-scheme: dark) {
 
-.idle-filename-header .idle-download-btn {
+.idle-filename-header .idle-download-btn,
+.idle-filename-header .csv-download-btn {
 background: transparent !important;
 border-color: transparent !important;
 color: #888 !important;
 }
-.idle-filename-header .idle-download-btn:hover {
+.idle-filename-header .idle-download-btn:hover,
+.idle-filename-header .csv-download-btn:hover {
 background: rgba(255, 255, 255, 0.05) !important;
 border-color: transparent !important;
 color: #aaa !important;
@@ -2427,12 +2444,41 @@ opacity: 1 !important;
 width: auto !important;
 height: auto !important;
 color: #333;
+text-decoration: none;
+}
+
+.idle-filename-header .csv-download-btn {
+position: static !important;
+background: white;
+border: 1px solid #ccc;
+border-radius: 4px;
+padding: 4px 8px;
+cursor: pointer;
+display: inline-flex !important;
+align-items: center;
+transition: all 0.2s;
+flex-shrink: 0;
+opacity: 1 !important;
+width: auto !important;
+height: auto !important;
+color: #333;
+text-decoration: none;
 }
 .idle-filename-header .idle-download-btn:hover {
 background: #e9ecef;
 border-color: #adb5bd;
+text-decoration: none;
+}
+.idle-filename-header .csv-download-btn:hover {
+background: #e9ecef;
+border-color: #adb5bd;
+text-decoration: none;
 }
 .idle-filename-header .idle-download-btn svg {
+display: block;
+color: inherit;
+}
+.idle-filename-header .csv-download-btn svg {
 display: block;
 color: inherit;
 }
@@ -2459,7 +2505,25 @@ margin-bottom: 0 !important;
 margin-top: 0 !important;
 }
 
+.csv-download-wrapper > .sourceCode {
+border-top-left-radius: 0 !important;
+border-top-right-radius: 0 !important;
+margin-top: 0 !important;
+margin-bottom: 0px !important;
+}
+.csv-download-wrapper > div:not(.cell-output):not(.idle-output-box) {
+margin-bottom: 0 !important;
+}
+.csv-download-wrapper .cell-code {
+margin-bottom: 0 !important;
+margin-top: 0 !important;
+}
+
 .idle-script-wrapper .cell-code > div {
+margin-top: 0 !important;
+margin-bottom: 0 !important;
+}
+.csv-download-wrapper .cell-code > div {
 margin-top: 0 !important;
 margin-bottom: 0 !important;
 }
@@ -2467,8 +2531,18 @@ margin-bottom: 0 !important;
 .idle-script-wrapper .cell-code > div:has(.idle-filename-header) {
 margin-bottom: 0 !important;
 }
+.csv-download-wrapper .cell-code > div:has(.idle-filename-header) {
+margin-bottom: 0 !important;
+}
 
 .idle-script-wrapper .cell-code > div:has(.idle-filename-header) + div {
+margin-top: 0 !important;
+}
+.csv-download-wrapper .cell-code > div:has(.idle-filename-header) + div {
+margin-top: 0 !important;
+}
+
+.csv-download-wrapper .code-copy-outer-scaffold {
 margin-top: 0 !important;
 }
 
@@ -2479,6 +2553,23 @@ margin-top: 0 !important;
 .idle-filename-header + div.cell-code pre {
 border-top-left-radius: 0 !important;
 border-top-right-radius: 0 !important;
+}
+
+.csv-download-wrapper .idle-filename-header + .sourceCode,
+.csv-download-wrapper .idle-filename-header ~ .sourceCode,
+.csv-download-wrapper .cell-code .sourceCode {
+margin-top: 0 !important;
+border-top: none !important;
+}
+
+.csv-download-wrapper .cell-code .sourceCode pre,
+.csv-download-wrapper .cell-code pre code {
+padding-bottom: 0 !important;
+margin-bottom: 0 !important;
+}
+.csv-download-wrapper .code-copy-outer-scaffold {
+padding-bottom: 0 !important;
+margin-bottom: 0 !important;
 }
 
 .idle-script-wrapper .idle-run-btn {
@@ -2499,19 +2590,23 @@ border-top-right-radius: 0 !important;
 margin-top: 0 !important;
 }
 
-.idle-script-wrapper .cell-code .code-copy-outer-scaffold {
+.idle-script-wrapper .cell-code .code-copy-outer-scaffold,
+.csv-download-wrapper .cell-code .code-copy-outer-scaffold {
 margin-top: 0 !important;
 margin-bottom: 0 !important;
 }
-.idle-script-wrapper .cell-code .code-copy-outer-scaffold .sourceCode {
+.idle-script-wrapper .cell-code .code-copy-outer-scaffold .sourceCode,
+.csv-download-wrapper .cell-code .code-copy-outer-scaffold .sourceCode {
 margin-top: 0 !important;
 }
 
-.idle-script-wrapper .cell-code div.sourceCode {
+.idle-script-wrapper .cell-code div.sourceCode,
+.csv-download-wrapper .cell-code div.sourceCode {
 margin: 0 !important;
 }
 
-.idle-script-wrapper .cell-code > .code-with-filename-file {
+.idle-script-wrapper .cell-code > .code-with-filename-file,
+.csv-download-wrapper .cell-code > .code-with-filename-file {
 display: none;
 }</style>
 </head>
@@ -2536,7 +2631,7 @@ display: none;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 29, 2026</p>
+      <p class="date">January 30, 2026</p>
     </div>
   </div>
   
@@ -2590,14 +2685,39 @@ display: none;
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-10383" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-127ca" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-10d77" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-1691" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-10383)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-127ca)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-10d77)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-1691)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>leap_year_function.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="leap_year_function.py" data-code="def%20is_leap_year%28year%3A%20int%29%20-%3E%20bool%3A%0D%0A%20%20%20%20%22%22%22Returns%20True%20if%20the%20given%20year%20is%20a%20leap%20year%2C%20False%20otherwise.%0D%0A%0D%0A%20%20%20%20Parameters%3A%0D%0A%20%20%20%20-----------%0D%0A%20%20%20%20year%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20year%20to%20check%20%28e.g.%2C%202018%29.%0D%0A%0D%0A%20%20%20%20Returns%3A%0D%0A%20%20%20%20--------%0D%0A%20%20%20%20bool%0D%0A%20%20%20%20%20%20%20%20True%20if%20the%20year%20is%20a%20leap%20year%2C%20False%20otherwise.%0D%0A%20%20%20%20%22%22%22%0D%0A%20%20%20%20if%20year%20%25%20400%20%3D%3D%200%3A%0D%0A%20%20%20%20%20%20%20%20return%20True%0D%0A%20%20%20%20elif%20year%20%25%20100%20%3D%3D%200%3A%0D%0A%20%20%20%20%20%20%20%20return%20False%0D%0A%20%20%20%20elif%20year%20%25%204%20%3D%3D%200%3A%0D%0A%20%20%20%20%20%20%20%20return%20True%0D%0A%20%20%20%20else%3A%0D%0A%20%20%20%20%20%20%20%20return%20False%0D%0A%0D%0Aprint%28is_leap_year%282016%29%29%0D%0Aprint%28is_leap_year%282100%29%29%0D%0Aprint%28is_leap_year%282000%29%29%0D%0Aprint%28is_leap_year%282019%29%29" title="Download leap_year_function.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-leap-year-function-py" type="text/plain">def is_leap_year(year: int) -> bool:
+    """Returns True if the given year is a leap year, False otherwise.
+
+    Parameters:
+    -----------
+    year : int
+        The year to check (e.g., 2018).
+
+    Returns:
+    --------
+    bool
+        True if the year is a leap year, False otherwise.
+    """
+    if year % 400 == 0:
+        return True
+    elif year % 100 == 0:
+        return False
+    elif year % 4 == 0:
+        return True
+    else:
+        return False
+
+print(is_leap_year(2016))
+print(is_leap_year(2100))
+print(is_leap_year(2000))
+print(is_leap_year(2019))</script><button class="idle-download-btn" data-filename="leap_year_function.py" data-content-id="download-content-leap-year-function-py" title="Download leap_year_function.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -2637,11 +2757,11 @@ display: none;
  Run Code</button>
 <div class="idle-output-header"><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-16644" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-17b9c" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-30a3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-f86b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-16644)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-17b9c)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-30a3)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-f86b)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 Output</div>
 <div class="idle-output-box">
@@ -2657,10 +2777,84 @@ False</code></pre>
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -2674,11 +2868,8 @@ False</code></pre>
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -2690,50 +2881,11 @@ False</code></pre>
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -2771,14 +2923,47 @@ False</code></pre>
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-120f4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-131f4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-2efc" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-1635b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-120f4)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-131f4)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-2efc)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-1635b)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>zellers_congruence_function.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="zellers_congruence_function.py" data-code="def%20day_of_week%28day%3A%20int%2C%20month%3A%20int%2C%20year%3A%20int%29%20-%3E%20str%3A%0D%0A%20%20%20%20%22%22%22Returns%20the%20day%20of%20the%20week%20for%20a%20given%20date%20using%20Zeller%27s%20Congruence.%0D%0A%0D%0A%20%20%20%20Parameters%3A%0D%0A%20%20%20%20-----------%0D%0A%20%20%20%20day%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20day%20of%20the%20month%20%281-31%29.%0D%0A%20%20%20%20month%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20month%20%281-12%29.%0D%0A%20%20%20%20year%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20year%20%28e.g.%2C%202019%29.%0D%0A%0D%0A%20%20%20%20Returns%3A%0D%0A%20%20%20%20--------%0D%0A%20%20%20%20str%0D%0A%20%20%20%20%20%20%20%20The%20name%20of%20the%20day%20of%20the%20week%20%28e.g.%2C%20%22Monday%22%29.%0D%0A%20%20%20%20%22%22%22%0D%0A%0D%0A%20%20%20%20days%20%3D%20%5B%22Saturday%22%2C%20%22Sunday%22%2C%20%22Monday%22%2C%20%22Tuesday%22%2C%20%22Wednesday%22%2C%20%22Thursday%22%2C%20%22Friday%22%5D%0D%0A%20%20%20%20%0D%0A%20%20%20%20if%20month%20%3C%203%3A%0D%0A%20%20%20%20%20%20%20%20month%20%2B%3D%2012%0D%0A%20%20%20%20%20%20%20%20year%20-%3D%201%0D%0A%20%20%20%20%20%20%20%20%0D%0A%20%20%20%20year_of_century%20%3D%20year%20%25%20100%0D%0A%20%20%20%20century%20%3D%20year%20%2F%2F%20100%0D%0A%20%20%20%20%0D%0A%20%20%20%20day_of_week%20%3D%20%28%28day%20%2B%20%2813%20%2A%20%28month%20%2B%201%29%29%20%2F%2F%205%20%2B%20year_of_century%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B%20year_of_century%20%2F%2F%204%20%2B%20century%20%2F%2F%204%20-%202%20%2A%20century%29%20%25%207%29%0D%0A%20%20%20%0D%0A%20%20%20%20return%20days%5Bday_of_week%5D%0D%0A%0D%0Aprint%28day_of_week%2815%2C%208%2C%201995%29%29%0D%0Aprint%28day_of_week%281%2C%201%2C%202000%29%29" title="Download zellers_congruence_function.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-zellers-congruence-function-py" type="text/plain">def day_of_week(day: int, month: int, year: int) -> str:
+    """Returns the day of the week for a given date using Zeller's Congruence.
+
+    Parameters:
+    -----------
+    day : int
+        The day of the month (1-31).
+    month : int
+        The month (1-12).
+    year : int
+        The year (e.g., 2019).
+
+    Returns:
+    --------
+    str
+        The name of the day of the week (e.g., "Monday").
+    """
+
+    days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+    
+    if month < 3:
+        month += 12
+        year -= 1
+        
+    year_of_century = year % 100
+    century = year // 100
+    
+    day_of_week = ((day + (13 * (month + 1)) // 5 + year_of_century
+                   + year_of_century // 4 + century // 4 - 2 * century) % 7)
+   
+    return days[day_of_week]
+
+print(day_of_week(15, 8, 1995))
+print(day_of_week(1, 1, 2000))</script><button class="idle-download-btn" data-filename="zellers_congruence_function.py" data-content-id="download-content-zellers-congruence-function-py" title="Download zellers_congruence_function.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -2826,11 +3011,11 @@ False</code></pre>
  Run Code</button>
 <div class="idle-output-header"><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-6a44" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-62f2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-31e2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-64e6" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-6a44)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-62f2)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-31e2)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-64e6)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 Output</div>
 <div class="idle-output-box">
@@ -2844,10 +3029,84 @@ Saturday</code></pre>
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -2861,11 +3120,8 @@ Saturday</code></pre>
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -2877,50 +3133,11 @@ Saturday</code></pre>
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -2938,14 +3155,39 @@ Saturday</code></pre>
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-2e05" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-56a2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-3372" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-3795" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-2e05)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-56a2)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-3372)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-3795)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>middle_number.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="middle_number.py" data-code="def%20middle_number%28num_1%3A%20int%2C%20num_2%3A%20int%2C%20num_3%3A%20int%29%20-%3E%20int%3A%0D%0A%20%20%20%20%22%22%22%0D%0A%20%20%20%20Returns%20the%20number%20among%20%3Cx%3E%2C%20%3Cy%3E%2C%20and%20%3Cz%3E%20that%20is%20neither%20%0D%0A%20%20%20%20the%20biggest%20nor%20the%20smallest.%0D%0A%0D%0A%20%20%20%20Parameters%3A%0D%0A%20%20%20%20-----------%0D%0A%20%20%20%20num_1%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20first%20number.%0D%0A%20%20%20%20num_2%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20second%20number.%0D%0A%20%20%20%20num_3%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20third%20number.%0D%0A%0D%0A%20%20%20%20Returns%3A%0D%0A%20%20%20%20--------%0D%0A%20%20%20%20int%0D%0A%20%20%20%20%20%20%20%20The%20middle%20number%20among%20the%20three%20inputs.%0D%0A%0D%0A%20%20%20%20Examples%3A%0D%0A%20%20%20%20--------%0D%0A%20%20%20%20%3E%3E%3E%20middle_number%28-10%2C%2010%2C%205%29%0D%0A%20%20%20%205%0D%0A%20%20%20%20%22%22%22%0D%0A%20%20%20%20return%20%28num_1%20%2B%20num_2%20%2B%20num_3%20-%20min%28num_1%2C%20num_2%2C%20num_3%29%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20-%20max%28num_1%2C%20num_2%2C%20num_3%29%29" title="Download middle_number.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-middle-number-py" type="text/plain">def middle_number(num_1: int, num_2: int, num_3: int) -> int:
+    """
+    Returns the number among <x>, <y>, and <z> that is neither 
+    the biggest nor the smallest.
+
+    Parameters:
+    -----------
+    num_1 : int
+        The first number.
+    num_2 : int
+        The second number.
+    num_3 : int
+        The third number.
+
+    Returns:
+    --------
+    int
+        The middle number among the three inputs.
+
+    Examples:
+    --------
+    >>> middle_number(-10, 10, 5)
+    5
+    """
+    return (num_1 + num_2 + num_3 - min(num_1, num_2, num_3)
+            - max(num_1, num_2, num_3))</script><button class="idle-download-btn" data-filename="middle_number.py" data-content-id="download-content-middle-number-py" title="Download middle_number.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -2984,10 +3226,84 @@ Saturday</code></pre>
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3001,11 +3317,8 @@ Saturday</code></pre>
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3017,50 +3330,11 @@ Saturday</code></pre>
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -3073,14 +3347,45 @@ Saturday</code></pre>
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-7a35" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-469f" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-30b3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-d64" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-7a35)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-469f)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-30b3)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-d64)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>middler_number.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="middler_number.py" data-code="def%20middler_number%28num_1%3A%20int%2C%20num_2%3A%20int%2C%20num_3%3A%20int%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20num_4%3A%20int%2C%20num_5%3A%20int%29%20-%3E%20int%3A%0D%0A%20%20%20%20%22%22%22%0D%0A%20%20%20%20Return%20the%20number%20that%20would%20be%20in%20the%20middle%20of%20the%20sequence%20%3Ca%3E%2C%20%3Cb%3E%2C%20%0D%0A%20%20%20%20%3Cc%3E%2C%20%3Cd%3E%2C%20and%20%3Ce%3E%20if%20they%20were%20to%20be%20ordered.%0D%0A%0D%0A%20%20%20%20Precondition%3A%0D%0A%20%20%20%20%20%20%20%20No%20two%20of%20num_1%2C%20num_2%2C%20num_3%2C%20num_4%2C%20and%20num_5%20are%20equal.%0D%0A%0D%0A%20%20%20%20Parameters%3A%0D%0A%20%20%20%20-----------%0D%0A%20%20%20%20num_1%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20first%20number.%0D%0A%20%20%20%20num_2%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20second%20number.%0D%0A%20%20%20%20num_3%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20third%20number.%0D%0A%20%20%20%20num_4%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20fourth%20number.%0D%0A%20%20%20%20num_5%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20fifth%20number.%0D%0A%20%20%20%20%0D%0A%20%20%20%20Returns%3A%0D%0A%20%20%20%20--------%0D%0A%20%20%20%20int%0D%0A%20%20%20%20%20%20%20%20The%20middle%20number%20among%20the%20five%20inputs.%0D%0A%20%20%20%20%0D%0A%20%20%20%20Examples%3A%0D%0A%20%20%20%20--------%0D%0A%20%20%20%20%3E%3E%3E%20middle_number%28-4%2C%20101%2C%205%2C%2091%2C%207%29%0D%0A%20%20%20%207%0D%0A%20%20%20%20%22%22%22" title="Download middler_number.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-middler-number-py" type="text/plain">def middler_number(num_1: int, num_2: int, num_3: int,
+                   num_4: int, num_5: int) -> int:
+    """
+    Return the number that would be in the middle of the sequence <a>, <b>, 
+    <c>, <d>, and <e> if they were to be ordered.
+
+    Precondition:
+        No two of num_1, num_2, num_3, num_4, and num_5 are equal.
+
+    Parameters:
+    -----------
+    num_1 : int
+        The first number.
+    num_2 : int
+        The second number.
+    num_3 : int
+        The third number.
+    num_4 : int
+        The fourth number.
+    num_5 : int
+        The fifth number.
+    
+    Returns:
+    --------
+    int
+        The middle number among the five inputs.
+    
+    Examples:
+    --------
+    >>> middle_number(-4, 101, 5, 91, 7)
+    7
+    """</script><button class="idle-download-btn" data-filename="middler_number.py" data-content-id="download-content-middler-number-py" title="Download middler_number.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -3126,10 +3431,84 @@ Saturday</code></pre>
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3143,11 +3522,8 @@ Saturday</code></pre>
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3159,50 +3535,11 @@ Saturday</code></pre>
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -3238,14 +3575,55 @@ Tip
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-823c" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-10c5b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-6f1d" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-b281" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-823c)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-10c5b)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-6f1d)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-b281)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>middler_number.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="middler_number.py" data-code="def%20middler_number%28num_1%3A%20int%2C%20num_2%3A%20int%2C%20num_3%3A%20int%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20num_4%3A%20int%2C%20num_5%3A%20int%29%20-%3E%20int%3A%0D%0A%20%20%20%20%22%22%22%0D%0A%20%20%20%20Return%20the%20number%20that%20would%20be%20in%20the%20middle%20of%20the%20sequence%20%3Ca%3E%2C%20%3Cb%3E%2C%20%0D%0A%20%20%20%20%3Cc%3E%2C%20%3Cd%3E%2C%20and%20%3Ce%3E%20if%20they%20were%20to%20be%20ordered.%0D%0A%0D%0A%20%20%20%20Precondition%3A%0D%0A%20%20%20%20%20%20%20%20No%20two%20of%20num_1%2C%20num_2%2C%20num_3%2C%20num_4%2C%20and%20num_5%20are%20equal.%0D%0A%0D%0A%20%20%20%20Parameters%3A%0D%0A%20%20%20%20-----------%0D%0A%20%20%20%20num_1%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20first%20number.%0D%0A%20%20%20%20num_2%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20second%20number.%0D%0A%20%20%20%20num_3%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20third%20number.%0D%0A%20%20%20%20num_4%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20fourth%20number.%0D%0A%20%20%20%20num_5%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20fifth%20number.%0D%0A%20%20%20%20%0D%0A%20%20%20%20Returns%3A%0D%0A%20%20%20%20--------%0D%0A%20%20%20%20int%0D%0A%20%20%20%20%20%20%20%20The%20middle%20number%20among%20the%20five%20inputs.%0D%0A%20%20%20%20%0D%0A%20%20%20%20Examples%3A%0D%0A%20%20%20%20--------%0D%0A%20%20%20%20%3E%3E%3E%20middle_number%28-4%2C%20101%2C%205%2C%2091%2C%207%29%0D%0A%20%20%20%207%0D%0A%20%20%20%20%22%22%22%0D%0A%0D%0A%20%20%20%20three_numbers%20%3D%20%28%29%0D%0A%20%20%20%20mid_1%20%3D%20middle_number%28num_1%2C%20num_2%2C%20num_3%29%0D%0A%20%20%20%20mid_2%20%3D%20middle_number%28num_2%2C%20num_3%2C%20num_4%29%0D%0A%20%20%20%20mid_3%20%3D%20middle_number%28num_3%2C%20num_4%2C%20num_5%29%0D%0A%20%20%20%20%0D%0A%20%20%20%20return%20middle_number%28mid_1%2C%20mid_2%2C%20mid_3%29%0D%0A%0D%0Aprint%28middler_number%28-4%2C%20101%2C%205%2C%2091%2C%207%29%29%0D%0Aprint%28middler_number%2810%2C%2030%2C%2020%2C%2050%2C%2040%29%29" title="Download middler_number.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-middler-number-py" type="text/plain">def middler_number(num_1: int, num_2: int, num_3: int,
+                   num_4: int, num_5: int) -> int:
+    """
+    Return the number that would be in the middle of the sequence <a>, <b>, 
+    <c>, <d>, and <e> if they were to be ordered.
+
+    Precondition:
+        No two of num_1, num_2, num_3, num_4, and num_5 are equal.
+
+    Parameters:
+    -----------
+    num_1 : int
+        The first number.
+    num_2 : int
+        The second number.
+    num_3 : int
+        The third number.
+    num_4 : int
+        The fourth number.
+    num_5 : int
+        The fifth number.
+    
+    Returns:
+    --------
+    int
+        The middle number among the five inputs.
+    
+    Examples:
+    --------
+    >>> middle_number(-4, 101, 5, 91, 7)
+    7
+    """
+
+    three_numbers = ()
+    mid_1 = middle_number(num_1, num_2, num_3)
+    mid_2 = middle_number(num_2, num_3, num_4)
+    mid_3 = middle_number(num_3, num_4, num_5)
+    
+    return middle_number(mid_1, mid_2, mid_3)
+
+print(middler_number(-4, 101, 5, 91, 7))
+print(middler_number(10, 30, 20, 50, 40))</script><button class="idle-download-btn" data-filename="middler_number.py" data-content-id="download-content-middler-number-py" title="Download middler_number.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -3301,11 +3679,11 @@ Tip
  Run Code</button>
 <div class="idle-output-header"><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-f397" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-5db9" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-631" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-152ce" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-f397)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-5db9)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-631)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-152ce)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 Output</div>
 <div class="idle-output-box">
@@ -3319,10 +3697,84 @@ Output</div>
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3336,11 +3788,8 @@ Output</div>
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3352,50 +3801,11 @@ Output</div>
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -3439,14 +3849,26 @@ Note
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-12dca" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-17474" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-10dae" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-11724" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-12dca)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-17474)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-10dae)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-11724)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>turtle_example.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="turtle_example.py" data-code="import%20turtle%0D%0A%0D%0Adef%20demo%28%29%20%3A%0D%0A%20%20%20%20%22%22%22Turtle%20demo.%22%22%22%0D%0A%20%20%20%20turtle.forward%28100%29%0D%0A%20%20%20%20turtle.left%28120%29%0D%0A%20%20%20%20turtle.forward%2880%29%0D%0A%20%20%20%20turtle.right%2890%29%0D%0A%20%20%20%20turtle.forward%2880%29%0D%0A%0D%0Aif%20__name__%20%3D%3D%20%22__main__%22%20%3A%0D%0A%20%20%20%20demo%28%29%0D%0A%20%20%20%20turtle.exitonclick%28%29%20%20%20%20" title="Download turtle_example.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-turtle-example-py" type="text/plain">import turtle
+
+def demo() :
+    """Turtle demo."""
+    turtle.forward(100)
+    turtle.left(120)
+    turtle.forward(80)
+    turtle.right(90)
+    turtle.forward(80)
+
+if __name__ == "__main__" :
+    demo()
+    turtle.exitonclick()    </script><button class="idle-download-btn" data-filename="turtle_example.py" data-content-id="download-content-turtle-example-py" title="Download turtle_example.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -3473,10 +3895,84 @@ Note
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3490,11 +3986,8 @@ Note
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3506,50 +3999,11 @@ Note
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -3605,14 +4059,32 @@ Figure 2: The Turtle rectangle output
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-c53c" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-7bb2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-ce9d" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-145bc" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-c53c)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-7bb2)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-ce9d)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-145bc)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>turtle_rectangle.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="turtle_rectangle.py" data-code="import%20turtle%0D%0A%0D%0Adef%20rectangle%28width%3A%20int%2C%20height%3A%20int%29%3A%0D%0A%20%20%20%20%22%22%22Draws%20a%20rectangle%20with%20the%20given%20width%20and%20height.%0D%0A%0D%0A%20%20%20%20Parameters%3A%0D%0A%20%20%20%20-----------%0D%0A%20%20%20%20width%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20width%20of%20the%20rectangle.%0D%0A%20%20%20%20height%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20height%20of%20the%20rectangle.%0D%0A%20%20%20%20%22%22%22%0D%0A%20%20%20%20for%20_%20in%20range%282%29%3A%0D%0A%20%20%20%20%20%20%20%20turtle.forward%28width%29%0D%0A%20%20%20%20%20%20%20%20turtle.left%2890%29%0D%0A%20%20%20%20%20%20%20%20turtle.forward%28height%29%0D%0A%20%20%20%20%20%20%20%20turtle.left%2890%29%0D%0A%0D%0A%20%20%20%20turtle.exitonclick%28%29" title="Download turtle_rectangle.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-turtle-rectangle-py" type="text/plain">import turtle
+
+def rectangle(width: int, height: int):
+    """Draws a rectangle with the given width and height.
+
+    Parameters:
+    -----------
+    width : int
+        The width of the rectangle.
+    height : int
+        The height of the rectangle.
+    """
+    for _ in range(2):
+        turtle.forward(width)
+        turtle.left(90)
+        turtle.forward(height)
+        turtle.left(90)
+
+    turtle.exitonclick()</script><button class="idle-download-btn" data-filename="turtle_rectangle.py" data-content-id="download-content-turtle-rectangle-py" title="Download turtle_rectangle.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -3644,10 +4116,84 @@ Figure 2: The Turtle rectangle output
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3661,11 +4207,8 @@ Figure 2: The Turtle rectangle output
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3677,50 +4220,11 @@ Figure 2: The Turtle rectangle output
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -3731,14 +4235,34 @@ Figure 2: The Turtle rectangle output
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-a0ce" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-14ec3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-5621" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-156bd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-a0ce)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-14ec3)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-5621)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-156bd)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>turtle_rectangle.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="turtle_rectangle.py" data-code="import%20turtle%0D%0A%0D%0Adef%20rectangle%28width%3A%20int%2C%20height%3A%20int%29%3A%0D%0A%20%20%20%20%22%22%22Draws%20a%20rectangle%20with%20the%20given%20width%20and%20height.%0D%0A%0D%0A%20%20%20%20Parameters%3A%0D%0A%20%20%20%20-----------%0D%0A%20%20%20%20width%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20width%20of%20the%20rectangle.%0D%0A%20%20%20%20height%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20height%20of%20the%20rectangle.%0D%0A%20%20%20%20%22%22%22%0D%0A%20%20%20%20i%20%3D%200%0D%0A%20%20%20%20while%20i%20%3C%202%3A%0D%0A%20%20%20%20%20%20%20%20turtle.forward%28width%29%0D%0A%20%20%20%20%20%20%20%20turtle.left%2890%29%0D%0A%20%20%20%20%20%20%20%20turtle.forward%28height%29%0D%0A%20%20%20%20%20%20%20%20turtle.left%2890%29%0D%0A%20%20%20%20%20%20%20%20i%20%2B%3D%201%0D%0A%20%20%20%20%0D%0A%20%20%20%20turtle.exitonclick%28%29" title="Download turtle_rectangle.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-turtle-rectangle-py" type="text/plain">import turtle
+
+def rectangle(width: int, height: int):
+    """Draws a rectangle with the given width and height.
+
+    Parameters:
+    -----------
+    width : int
+        The width of the rectangle.
+    height : int
+        The height of the rectangle.
+    """
+    i = 0
+    while i < 2:
+        turtle.forward(width)
+        turtle.left(90)
+        turtle.forward(height)
+        turtle.left(90)
+        i += 1
+    
+    turtle.exitonclick()</script><button class="idle-download-btn" data-filename="turtle_rectangle.py" data-content-id="download-content-turtle-rectangle-py" title="Download turtle_rectangle.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -3772,10 +4296,84 @@ Figure 2: The Turtle rectangle output
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3789,11 +4387,8 @@ Figure 2: The Turtle rectangle output
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3805,50 +4400,11 @@ Figure 2: The Turtle rectangle output
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -3885,14 +4441,37 @@ Figure 3: The Turtle rotated rectangle output
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-147f5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-1e30" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-12e6e" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-feb5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-147f5)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-1e30)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-12e6e)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-feb5)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>turtle_rotated_rectangle.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="turtle_rotated_rectangle.py" data-code="import%20turtle%0D%0A%0D%0Adef%20rotated_rectangle%28width%3A%20int%2C%20height%3A%20int%2C%20angle%3A%20float%29%3A%0D%0A%20%20%20%20%22%22%22Draws%20a%20rectangle%20with%20the%20given%20width%20and%20height%2C%20rotated%20by%20angle%20degrees.%22%0D%0A%20%20%20%20%0D%0A%20%20%20%20Parameters%3A%0D%0A%20%20%20%20-----------%0D%0A%20%20%20%20width%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20width%20of%20the%20rectangle.%0D%0A%20%20%20%20height%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20height%20of%20the%20rectangle.%0D%0A%20%20%20%20angle%20%3A%20float%0D%0A%20%20%20%20%20%20%20%20The%20angle%20in%20degrees%20to%20rotate%20the%20rectangle%20anticlockwise.%0D%0A%20%20%20%20%22%22%22%0D%0A%0D%0A%20%20%20%20turtle.left%28angle%29%0D%0A%20%20%20%20for%20_%20in%20range%282%29%3A%0D%0A%20%20%20%20%20%20%20%20turtle.forward%28width%29%0D%0A%20%20%20%20%20%20%20%20turtle.left%2890%29%0D%0A%20%20%20%20%20%20%20%20turtle.forward%28height%29%0D%0A%20%20%20%20%20%20%20%20turtle.left%2890%29%0D%0A%20%20%20%20%0D%0A%20%20%20%20turtle.right%28angle%29%0D%0A%20%20%20%20turtle.exitonclick%28%29" title="Download turtle_rotated_rectangle.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-turtle-rotated-rectangle-py" type="text/plain">import turtle
+
+def rotated_rectangle(width: int, height: int, angle: float):
+    """Draws a rectangle with the given width and height, rotated by angle degrees."
+    
+    Parameters:
+    -----------
+    width : int
+        The width of the rectangle.
+    height : int
+        The height of the rectangle.
+    angle : float
+        The angle in degrees to rotate the rectangle anticlockwise.
+    """
+
+    turtle.left(angle)
+    for _ in range(2):
+        turtle.forward(width)
+        turtle.left(90)
+        turtle.forward(height)
+        turtle.left(90)
+    
+    turtle.right(angle)
+    turtle.exitonclick()</script><button class="idle-download-btn" data-filename="turtle_rotated_rectangle.py" data-content-id="download-content-turtle-rotated-rectangle-py" title="Download turtle_rotated_rectangle.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -3929,10 +4508,84 @@ Figure 3: The Turtle rotated rectangle output
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -3946,11 +4599,8 @@ Figure 3: The Turtle rotated rectangle output
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -3962,50 +4612,11 @@ Figure 3: The Turtle rotated rectangle output
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
@@ -4016,14 +4627,33 @@ Figure 3: The Turtle rotated rectangle output
 <div class="idle-filename-header">
 <div class="code-with-filename-file"><pre><svg width="18" height="18" viewbox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
  <defs>
-  <lineargradient id="grad-697ac9d0-12990" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
-  <lineargradient id="grad-697ac9d0-b802" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-12f67" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3776ab;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#264e70;stop-opacity:1"></stop></lineargradient>
+  <lineargradient id="grad-697c0d2b-ab8a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ffd43b;stop-opacity:1"></stop><stop offset="100%" style="stop-color:#ffe873;stop-opacity:1"></stop></lineargradient>
  </defs>
- <path style="fill:url(#grad-697ac9d0-12990)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
- <path style="fill:url(#grad-697ac9d0-b802)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-12f67)" d="M 54.9,0 C 50.3,0 45.9,0.4 42.1,1.1 30.7,3.1 28.7,7.3 28.7,15 v 10.2 h 26.8 v 3.4 h -26.8 -10 c -7.8,0 -14.6,4.7 -16.7,13.6 -2.5,10.2 -2.6,16.6 0,27.2 1.9,7.9 6.4,13.6 14.2,13.6 h 9.2 v -12.2 c 0,-8.8 7.6,-16.6 16.7,-16.6 h 26.8 c 7.4,0 13.4,-6.1 13.4,-13.6 v -25.5 c 0,-7.2 -6.1,-12.7 -13.4,-13.9 C 64.3,0.3 59.5,0 54.9,0 Z m -14.5,8.2 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.3,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
+ <path style="fill:url(#grad-697c0d2b-ab8a)" d="m 85.6,28.6 v 11.9 c 0,9.2 -7.8,17 -16.7,17 h -26.8 c -7.3,0 -13.4,6.3 -13.4,13.6 v 25.5 c 0,7.3 6.3,11.5 13.4,13.6 8.5,2.5 16.6,3 26.8,0 6.7,-2 13.4,-5.9 13.4,-13.6 V 86.5 h -26.8 v -3.4 h 26.8 13.4 c 7.8,0 10.7,-5.4 13.4,-13.6 2.8,-8.4 2.7,-16.5 0,-27.2 -1.9,-7.7 -5.6,-13.6 -13.4,-13.6 z m -15,64.6 c 2.8,0 5,2.3 5,5.1 0,2.8 -2.2,5.1 -5,5.1 -2.8,0 -5,-2.3 -5,-5.1 0,-2.8 2.2,-5.1 5,-5.1 z" />
 </svg>
 <strong>turtle_rotated_rectangle.py</strong></pre></div>
-<button class="idle-download-btn" data-filename="turtle_rotated_rectangle.py" data-code="import%20turtle%0D%0A%0D%0Adef%20rotated_rectangle%28width%3A%20int%2C%20height%3A%20int%2C%20angle%3A%20float%29%3A%0D%0A%20%20%20%20%22%22%22Draws%20a%20rectangle%20with%20the%20given%20width%20and%20height%2C%20rotated%20by%20angle%20degrees.%22%0D%0A%20%20%20%20%0D%0A%20%20%20%20Parameters%3A%0D%0A%20%20%20%20-----------%0D%0A%20%20%20%20width%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20width%20of%20the%20rectangle.%0D%0A%20%20%20%20height%20%3A%20int%0D%0A%20%20%20%20%20%20%20%20The%20height%20of%20the%20rectangle.%0D%0A%20%20%20%20angle%20%3A%20float%0D%0A%20%20%20%20%20%20%20%20The%20angle%20in%20degrees%20to%20rotate%20the%20rectangle%20anticlockwise.%0D%0A%20%20%20%20%22%22%22%0D%0A%0D%0A%20%20%20%20turtle.left%28angle%29%0D%0A%20%20%20%20rectangle%28width%2C%20height%29%20%20%23%20Call%20the%20rectangle%20function%20from%20Task%203%0D%0A%20%20%20%20turtle.right%28angle%29%0D%0A%0D%0A%20%20%20%20turtle.exitonclick%28%29" title="Download turtle_rotated_rectangle.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<script id="download-content-turtle-rotated-rectangle-py" type="text/plain">import turtle
+
+def rotated_rectangle(width: int, height: int, angle: float):
+    """Draws a rectangle with the given width and height, rotated by angle degrees."
+    
+    Parameters:
+    -----------
+    width : int
+        The width of the rectangle.
+    height : int
+        The height of the rectangle.
+    angle : float
+        The angle in degrees to rotate the rectangle anticlockwise.
+    """
+
+    turtle.left(angle)
+    rectangle(width, height)  # Call the rectangle function from Task 3
+    turtle.right(angle)
+
+    turtle.exitonclick()</script><button class="idle-download-btn" data-filename="turtle_rotated_rectangle.py" data-content-id="download-content-turtle-rotated-rectangle-py" title="Download turtle_rotated_rectangle.py"><svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <polyline points="7 10 12 15 17 10"></polyline>
   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -4056,10 +4686,84 @@ Figure 3: The Turtle rotated rectangle output
   try {
     var s = document.currentScript;
     var wrapper = s.closest('.idle-script-wrapper');
+    console.log('Script running, wrapper:', wrapper);
     if (wrapper) {
+        // 1. Handle Download Button FIRST (before any innerHTML modifications)
+        var btn = wrapper.querySelector('.idle-download-btn');
+        console.log('Download button found:', btn);
+        if (btn) {
+            console.log('Attaching click handler to button for:', btn.getAttribute('data-filename'));
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked!');
+                e.stopPropagation();
+                e.preventDefault();
+                var filename = btn.getAttribute('data-filename');
+                var contentId = btn.getAttribute('data-content-id');
+                var rawCode = '';
+                
+                // Get content from script tag
+                if (contentId) {
+                    var contentScript = document.getElementById(contentId);
+                    if (contentScript) {
+                        rawCode = contentScript.textContent || contentScript.innerText;
+                        console.log('Content loaded from script tag, length:', rawCode.length);
+                    } else {
+                        console.error('Content script not found:', contentId);
+                        return;
+                    }
+                } else {
+                    // Fallback to old method (for small files)
+                    rawCode = decodeURIComponent(btn.getAttribute('data-code'));
+                    console.log('Content loaded from data attribute, length:', rawCode.length);
+                }
+                
+                console.log('Filename:', filename);
+                
+                // Use Blob for better handling of large files
+                var blob = new Blob([rawCode], { type: 'text/plain;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+                var element = document.createElement('a');
+                element.setAttribute('href', url);
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+                URL.revokeObjectURL(url);
+                console.log('Download triggered');
+            });
+        }
+        
+        // 2. Handle Run Code Button BEFORE innerHTML modifications
+        var runBtn = wrapper.querySelector('.idle-run-btn');
+        if (runBtn) {
+            var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
+            var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
+            if (outputHeaders.length > 0 && outputBoxes.length > 0) {
+                // Hide all outputs initially
+                outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                
+                runBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isHidden = outputBoxes[0].style.display === 'none';
+                    if (isHidden) {
+                        outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'block'; });
+                        runBtn.classList.add('active');
+                    } else {
+                        outputHeaders.forEach(function(header) { header.style.display = 'none'; });
+                        outputBoxes.forEach(function(box) { box.style.display = 'none'; });
+                        runBtn.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // 3. Now do innerHTML modifications (these won't affect buttons since listeners are already attached)
         var codeDiv = wrapper.querySelector('.cell-code');
         if (codeDiv) {
-            // 1. Fix Blue Functions and Classes
+            // Fix Blue Functions and Classes
             codeDiv.innerHTML = codeDiv.innerHTML.replace(
                 /(<span class="(?:kw|cf)">def<\/span>\s+)([\w_]+)/g, 
                 '$1<span class="fu" style="color: #0000ff !important;">$2</span>'
@@ -4073,11 +4777,8 @@ Figure 3: The Turtle rotated rectangle output
                 /<span class="va">self<\/span>/g,
                 '<span class="va self">self</span>'
             );
-            // 2. Mark actual comments (with #) as red in .idle-script-wrapper
-            // For code blocks, Pandoc doesn't go through highlight_python(), so we need JS
-            // Use regex to add 'comment' class to spans that contain # (but not &#digits;)
+            // Mark actual comments (with #) as red in .idle-script-wrapper
             var codeDivHTML = codeDiv.innerHTML;
-            // Match <span class="co">content</span> where content has # not part of HTML entity
             codeDivHTML = codeDivHTML.replace(
                 /<span class="co">([^<]*#[^<]*)<\/span>/g,
                 function(match, content) {
@@ -4089,50 +4790,11 @@ Figure 3: The Turtle rotated rectangle output
                 }
             );
             codeDiv.innerHTML = codeDivHTML;
-            // 3. Handle Download Button
-            var btn = wrapper.querySelector('.idle-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var filename = btn.getAttribute('data-filename');
-                    var rawCode = decodeURIComponent(btn.getAttribute('data-code'));
-                    var element = document.createElement('a');
-                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rawCode));
-                    element.setAttribute('download', filename);
-                    element.style.display = 'none';
-                    document.body.appendChild(element);
-                    element.click();
-                    document.body.removeChild(element);
-                });
-            }
-            // 4. Handle Run Code Button
-            var runBtn = wrapper.querySelector('.idle-run-btn');
-            if (runBtn) {
-                var outputHeaders = wrapper.querySelectorAll('.idle-output-header');
-                var outputBoxes = wrapper.querySelectorAll('.idle-output-box');
-                if (outputHeaders.length > 0 && outputBoxes.length > 0) {
-                    // Hide all outputs initially
-                    outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                    outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                    
-                    runBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        var isHidden = outputBoxes[0].style.display === 'none';
-                        if (isHidden) {
-                            outputHeaders.forEach(function(header) { header.style.display = 'flex'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'block'; });
-                            runBtn.classList.add('active');
-                        } else {
-                            outputHeaders.forEach(function(header) { header.style.display = 'none'; });
-                            outputBoxes.forEach(function(box) { box.style.display = 'none'; });
-                            runBtn.classList.remove('active');
-                        }
-                    });
-                }
-            }
         }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error('idle.lua script error:', e);
+  }
 })();
 </script>
 
